@@ -3,6 +3,7 @@ function getQueryParam(parameterName) {
   return urlParams.get(parameterName);
 }
 
+ 
 const profileId = getQueryParam("profile");
 
 if (profileId) {
@@ -23,11 +24,7 @@ if (profileId) {
                 href=${element?.link}
                 key="1"
                 >${element?.name}</a
-              >
-        
-              
-          
-                  `;
+              >`;
       });
       let mySkills =
         res?.skills?.length !== 0 &&
@@ -154,7 +151,7 @@ if (profileId) {
         `;
       }
       const dynamicContent = document.getElementById("dynamic-content");
-      dynamicContent.innerHTML = `<div class="main-container">
+      dynamicContent.innerHTML = `<div class="main-container bg-white">
  <!-- header -->
  <div class="px-2">
    <header class="flex justify-start gap-x-6 items-center">
