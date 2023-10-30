@@ -19,27 +19,42 @@
   </head>
   <body >
    
-    <div class="A4 w-[800px] " id="dynamic-content">
+    <div class="A4" id="dynamic-content">
       <!-- This is where the dynamic content will be displayed -->
   </div>
 
 <script>
-  function getQueryParam(parameterName) {
-  const urlParams = new URLSearchParams(window.location.search);
-  return urlParams.get(parameterName);
+
+const data = {
+    "id": 1,
+    "eductaions": [],
+    "experiences": [],
+    "projects": [],
+    "interests": [],
+    "skills": [],
+    "certification": [],
+    "languages": [],
+    "social_links": [],
+    "profile_percentage": 20,
+    "video_questions": [],
+    "custom_videos": [],
+    "full_name": "Mukhtar Ahmad Zargar",
+    "profile_name": "Profile_1",
+    "position": "developer",
+    "address": "Mumbai, India",
+    "summary": "developer",
+    "email": "mukhtar@jobspri.com",
+    "country_code": "+91",
+    "mobile_no": "7889378278",
+    "gender": 1,
+    "profile_picture": null,
+    "created_by": 2,
+    "type": 91,
+    "template": null
 }
 
-const profileId = getQueryParam("profile");
-
-if (profileId) {
-  const apiUrl = `https://api.resumebuild.in/api/candidate/web-profile/${profileId}`;
-
-  fetch(apiUrl)
-  .then(response => response.json())
-  .then(item =>{
-    
-    
-    let res = item?.data
+if (data.length>=1) {
+    let res = data
 
     const videoQuestions = res?.video_questions?.filter((question) => question?.video !== null);
   
@@ -354,10 +369,10 @@ ${myEducation}
       </div>
 
 `;
-  })
-  .catch((error) => {
-    console.log("API request error:", error);
-  });
+  // })
+  // .catch((error) => {
+  //   console.log("API request error:", error);
+  // });
 } else {
     // Handle the case when 'profile' parameter is not present
     console.error("Profile parameter is missing from the URL.");
