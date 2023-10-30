@@ -22,29 +22,24 @@
     <div class="A4" id="dynamic-content">
       <!-- This is where the dynamic content will be displayed -->
   </div>
-
-<script>
-
-const data = {{data|safe}};
-
-if (Object.keys(data).length>=1) {
-    let res = data
-
-    const videoQuestions = res?.video_questions?.filter((question) => question?.video !== null);
+  <script>
+    const data = {{data|safe}};
   
-    let myVideos = "";
+    if (Object.key(data).length>=1) {
+        let res =data
+        const videoQuestions = res?.video_questions?.filter(
+    (question) => question?.video !== null
+  );
 
- 
-   videoQuestions?.forEach((element) => {
+  let myVideos = "";
+
+  videoQuestions?.forEach((element) => {
     myVideos =
       myVideos +
-      `
-      <div>
+    `<div>
       <h2 class="text-base">${element?.question?.question}</h2>
-      <a href=${element?.video} class="text-sm">Answer</a>
+      <a href=${element?.video} class="text-sm p-1.5 font-semibold bg-gray-700 rounded-md text-white">Answer</a>
     </div>
-       
-
         `;
   });
 
@@ -53,7 +48,9 @@ if (Object.keys(data).length>=1) {
   if (videoQuestions?.length !== 0) {
     videoProfileHtml = `
     <div class="px-4">
-      <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">Video Profile</h1>
+    <div class="border-t-2 border-gray-700 border-b-2">
+    <h1 class="font-semibold uppercase text-xl text-center text-gray-700">Video Profile</h1>
+  </div>
       <div class="flex gap-x-3">
         ${myVideos}
       </div>
@@ -63,7 +60,7 @@ if (Object.keys(data).length>=1) {
 
   let myEducation = "";
 
-  res?. eductaions?.forEach((element) => {
+  res?.eductaions?.forEach((element) => {
     myEducation =
       myEducation +
       `
@@ -76,17 +73,16 @@ if (Object.keys(data).length>=1) {
       <p class="text-sm text-gray-600">${element?.start_date}-${
         element?.is_current ? "Currently studying" : element?.end_date
       }</p>
-    </div>
-       
-
-        `;
+    </div> `;
   });
   let educationHtml = "";
 
-  if ( res?.eductaions?.length !== 0) {
+  if (res?.eductaions?.length !== 0) {
     educationHtml = `
   <div class="px-2">
-  <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">Education</h1>
+  <div class="border-t-2 border-gray-700 border-b-2">
+  <h1 class="font-semibold uppercase text-xl text-center text-gray-700">Education</h1>
+</div>
   <div>
 ${myEducation}
   </div>
@@ -110,8 +106,6 @@ ${myEducation}
         ${element?.description}
       </p>
     </div>
-      
-
         `;
   });
   let projectHtml = "";
@@ -119,7 +113,9 @@ ${myEducation}
   if (res?.projects?.length !== 0) {
     projectHtml = `
   <div class="px-2">
-          <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">Projects</h1>
+  <div class="border-t-2 border-gray-700 border-b-2">
+  <h1 class="font-semibold uppercase text-xl text-center text-gray-700">Project</h1>
+</div>
           <div>
            ${myProjects}
           </div>
@@ -157,17 +153,19 @@ ${myEducation}
   if (res?.experiences?.length !== 0) {
     experienceHtml = `
     <div class="px-2">
-    <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">Work Experience</h1>
+    <div class="border-t-2 border-gray-700 border-b-2">
+      <h1 class="font-semibold uppercase text-xl text-center text-gray-700">Work Experience</h1>
+    </div>
     <div>
-  
-   ${myExperience}
+     ${myExperience}
+    
     </div>
   </div>
   `;
   }
   let mySocial = "";
 
-  res?.social_links?.forEach((element) => {
+  social_links?.forEach((element) => {
     mySocial =
       mySocial +
       `
@@ -181,10 +179,10 @@ ${myEducation}
   let socialHtml = "";
 
   if (res?.social_links?.length !== 0) {
-    socialHtml  = `
-    <h3>
-             ${mySocial}
-            </h3>
+    socialHtml = `
+    <h3 class="flex flex-col text-right">
+                ${mySocial}
+                  </h3>
   `;
   }
 
@@ -197,19 +195,17 @@ ${myEducation}
       <div class="mt-1 flex gap-x-4 px-2">
       <p class="text-base">${element?.language}</p>
     </div>
-    
-   
-    
-
         `;
   });
   let languageHtml = "";
 
   if (res?.languages?.length !== 0) {
-    languageHtml  = `
+    languageHtml = `
     <div class="px-2">
-          <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">Languages</h1>
-          <div class="flex gap-x-4">
+    <div class="border-t-2 border-gray-700 border-b-2">
+    <h1 class="font-semibold uppercase text-xl text-center text-gray-700">Languages</h1>
+  </div>
+          <div class="flex gap-x-4 justify-center flex-wrap">
            ${myLanguage}
           </div>
         </div>
@@ -218,7 +214,7 @@ ${myEducation}
 
   let myInterests = "";
 
-  res?.interests?.forEach((element) => {
+ res?.interests?.forEach((element) => {
     myInterests =
       myInterests +
       `
@@ -226,18 +222,18 @@ ${myEducation}
      
     <p class="te xt-sm px-2">${element?.interest}</p>
 
- 
-    
-
         `;
   });
 
   let interestHtml = "";
 
   if (res?.interests?.length !== 0) {
-    interestHtml  = `
+    interestHtml = `
     <div class="px-2">
-          <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">Interests</h1>
+    <div class="border-t-2 border-gray-700 border-b-2">
+    <h1 class="font-semibold text-center uppercase text-xl text-gray-700">Interests</h1>
+  </div>
+          
           <div class="flex gap-x-3">
         ${myInterests}
           </div>
@@ -247,31 +243,31 @@ ${myEducation}
 
   let mySkills = res?.skills
     ?.map((item) => {
-      return ` <p
-      class="text-sm  text-black font-semibold p-2 w-fit "
-    >
-    ${item?.skill}
-    
-    </p>
+      return `
+      <p class="text-sm rounded-md bg-gray-700 p-1.5 text-white font-semibold w-fit">  ${item?.skill}</p>
+     
      
       `;
     })
     ?.join("");
-    let skillHtml = "";
+  let skillHtml = "";
 
-    if (res?.skills?.length !== 0) {
-      skillHtml  = `
+  if (res?.skills?.length !== 0) {
+    skillHtml = `
       <div class="px-2">
-      <h1 class="font-semibold uppercase text-xl mt-3 text-gray-700">
-        Skills
-      </h1>
-      <div class="flex gap-x-2.5 flex-warp mt-2.5">
-       ${mySkills}
-       
+      <div class="border-t-2 border-gray-700 border-b-2">
+        <h1 class="font-semibold text-center uppercase text-xl text-gray-700">Skills</h1>
+      </div>
+      
+      <hr />
+    
+      <div class="flex flex-col justify-start gap-y-2 items-start h-32 flex-wrap mt-2.5">
+      
+    ${mySkills}
       </div>
     </div>
     `;
-    }
+  }
 
   let myCertificate = res?.certification
     ?.map((item) => {
@@ -282,12 +278,14 @@ ${myEducation}
     })
     ?.join("");
 
-    let certificateHtml = "";
+  let certificateHtml = "";
 
-    if (res?.certification?.length !== 0) {
-      certificateHtml  = `
+  if (res?certification?.length !== 0) {
+    certificateHtml = `
       <div class="px-2">
-      <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">Certification</h1>
+      <div class="border-t-2 border-gray-700 border-b-2">
+      <h1 class="font-semibold uppercase text-xl text-center text-gray-700">Certification</h1>
+    </div>
       <div>
         <ul class="list-disc flex gap-x-1 list-inside">
       ${myCertificate}
@@ -295,63 +293,50 @@ ${myEducation}
       </div>
     </div>
     `;
+  }
+ return`  <div class="flex justify-between">
+          <!-- header -->
+          <div class="px-2">
+              <header class="flex justify-start gap-x-6 items-center">
+                <div>
+                  <h1 class="font-semibold text-2xl">${full_name}</h1>
+                  <h3 class="font-medium text-gray-400 text-lg">${position}</h3>
+                  <p class="font-medium text-base">${summary}.</p>
+                </div>
+              </header>
+          </div>
+            <!-- contact -->
+            <div>
+  
+                <section class="flex flex-col font-semibold text-right text-sm mt-2.5 text-gray-700 justify-around items-end">
+                  <h3>Email:${email}</h3>
+                  <h3>Phone:${mobile_no}</h3>
+                  <h3>City:${address}</h3>
+                ${socialHtml}
+                </section>
+            </div>
+      </div>
+          <!-- skill -->
+      ${skillHtml}
+            <!-- workexp -->
+         ${experienceHtml}
+            <!--Project  -->
+          ${projectHtml}
+            <!-- Education0 -->
+          ${educationHtml}
+            <!--  language-->
+           ${languageHtml}
+            <!-- certificate -->
+         ${certificateHtml}
+            <!-- interest -->
+          ${interestHtml}
+            <!--video profile  -->
+         ${videoProfileHtml}`
+        
+    } else {
+        console.log("error");
     }
 
-    const dynamicContent = document.getElementById("dynamic-content");
-    dynamicContent.innerHTML = `<div class="main-container bg-white">
-        <!-- header -->
-        <div class="px-2">
-          <header class="flex justify-start gap-x-6 items-center">
-            <div>
-              <h1 class="font-semibold text-2xl">${res?.full_name}</h1>
-              <h3 class="font-medium text-gray-700 text-lg">${res?.position}</h3>
-              <p class="font-medium text-base">
-                ${res?.summary}
-                websites.
-              </p>
-            </div>
-          </header>
-        </div>
-        <!-- contact -->
-        <div>
-          <section
-            class="flex bg-gray-700 font-semibold text-sm mt-2.5 text-white justify-around items-center"
-          >
-            <h3>${res?.email}</h3>
-            <h3>${res?.mobile_no}</h3>
-            <h3>${res?.address}</h3>
-           ${socialHtml}
-          </section>
-        </div>
-        <!-- skill -->
-     ${skillHtml}
-        <!--work exp  -->
-      ${experienceHtml}
-        <!-- Projects -->
-      ${projectHtml}
-        <!-- education -->
-      ${educationHtml}
-        <!-- language -->
-       ${languageHtml}
-        <!-- certificate  -->
-      ${certificateHtml}
-        <!--interest  -->
-       ${interestHtml}
-        <!-- video profile  -->
-      ${videoProfileHtml}
-        
-      </div>
-
-`;
-  // })
-  // .catch((error) => {
-  //   console.log("API request error:", error);
-  // });
-} else {
-    // Handle the case when 'profile' parameter is not present
-    console.error("Profile parameter is missing from the URL.");
-  }
-
-    </script>
+  </script>
   </body>
 </html>
