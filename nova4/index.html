@@ -27,7 +27,7 @@
   
     if (Object.keys(data).length>=1) {
         let res =data
-        
+
         const videoQuestions = res?.video_questions?.filter(
     (question) => question?.video !== null
   );
@@ -281,7 +281,7 @@ ${myEducation}
 
   let certificateHtml = "";
 
-  if (res?certification?.length !== 0) {
+  if (res?.certification?.length !== 0) {
     certificateHtml = `
       <div class="px-2">
       <div class="border-t-2 border-gray-700 border-b-2">
