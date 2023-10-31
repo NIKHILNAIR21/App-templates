@@ -128,8 +128,8 @@
   });
   let projectHtml = "";
 
-  if (projects?.length !== 0) {
-    res?.projectHtml = `
+  if (res?.projects?.length !== 0) {
+ projectHtml = `
     <div class="w-[50%]">
     <!-- Projects -->
     <div class="px-2 flex">
@@ -338,6 +338,53 @@
     
     `;
   }
+  const dynamicContent = document.getElementById("dynamic-content");
+    dynamicContent.innerHTML =`  <!-- header -->
+      <div class="px-2">
+          <header class="flex relative flex-col justify-start text-center gap-x-6 items-center">
+            <h1 class="font-semibold absolute px-24 text-2xl bg-white">${full_name}</h1>
+            <div class="border-r-2 border-l-2 mt-6 border-red-400 border-b-2 border-t-2 rounded-xl">
+              <h3 class="font-medium text-pink-400 text-lg">${position}</h3>
+              <p class="font-medium text-base">${summary}</p>
+            </div>
+          </header>
+        </div>
+        <!--contact-->
+        <div>
+          <section class="flex bg-red-400 rounded-md rounded-br-[30rem] rounded-bl-[30rem] font-semibold text-[14px] mt-2.5 text-violet-100 justify-around items-center">
+            <div>
+              <h3>${email}</h3>
+              <h3>${mobile_no}</h3>
+              <h3>${address}</h3>
+            </div>
+            <div>
+             ${socialHtml}
+              
+            </div>
+          </section>
+        </div>
+        <!-- sec2 -->
+        <div class="flex">
+      ${experienceHtml}
+       ${skillHtml}
+      </div>
+      <div class="flex">
+          ${projectHtml}
+         
+            ${educationHtml}    
+          </div>
+      </div>
+      <div class="flex">
+          ${languageHtml}
+       ${certificateHtml}
+  
+      </div>
+     <!-- interest  -->
+  ${interestHtml}
+    
+     <!-- video profile -->
+  ${videoProfileHtml}
+    `
 
     } else{
         console.log("error");
