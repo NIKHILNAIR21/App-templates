@@ -25,8 +25,9 @@
   <script>
     const data = {{data|safe}};
   
-    if (Object.key(data).length>=1) {
+    if (Object.keys(data).length>=1) {
         let res =data
+        
         const videoQuestions = res?.video_questions?.filter(
     (question) => question?.video !== null
   );

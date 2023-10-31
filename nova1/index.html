@@ -27,11 +27,11 @@
      
       const data = {{data|safe}};
    
-      if (Object.key(data).length>=1) {
+      if (Object.keys(data).length>=1) {
        
                 
                   // Update the HTML with the dynamic content
-                  let res=item?.data
+                  let res=data
                   let mySocial = "";
     
                   res?.social_links?.forEach((element) => {

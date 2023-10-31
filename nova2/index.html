@@ -24,7 +24,7 @@
     <script>
       const data = {{data|safe}};
 
-         if (Object.key(data).length>=1) {
+         if (Object.keys(data).length>=1) {
 
                let res = data;
                let mySocial = "";
@@ -154,6 +154,8 @@
 
                    `;
                });
+               let videoProfileHtml = "";
+               
                if (videoQuestions.length !== 0) {
                  videoProfileHtml = `
 
