@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        @page{
+            size: A4;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+  </head>
+  <body >
+   
+    <div class="A4" id="dynamic-content">
+      <!-- This is where the dynamic content will be displayed -->
+  </div>
+  <script>
+    const data = {{data|safe}};
+  
+    if(Object.keys(data).length>=1){
+        let res = data
+         
+        const videoQuestions = video_questions?.filter(
+    (question) => question?.video !== null
+  );
+
+  let myVideos = "";
+
+  videoQuestions?.forEach((element) => {
+    myVideos =
+      myVideos +
+      `
+       
+      <div>
+      <h2 class="text-base">${element?.question?.question}</h2>
+      <a href=${element?.video} class="text-sm">Answer</a>
+    </div>
+       
+
+        `;
+  });
+
+  let videoProfileHtml = "";
+
+  if (videoQuestions?.length !== 0) {
+    videoProfileHtml = `
+    <div class="px-4">
+    <h1 class="font-semibold uppercase text-xl mt-4 text-red-400">Video Profile</h1>
+    <div class="flex gap-x-3">
+    ${myVideos}
+
+     
+    
+    </div>
+  </div>
+   
+  `;
+  }
+
+  let myEducation = "";
+
+  eductaions?.forEach((element) => {
+    myEducation =
+      myEducation +
+      `
+      <div class="mt-1 p-1.5 rounded">
+      <div></div>
+      <h3 class="text-lg font-medium">${element?.university}</h3>
+      <p class="text-base text-red-400">
+      ${element?.course}
+      </p>
+      <p class="text-sm text-gray-600">${element?.start_date}-${
+        element?.is_current ? "Currently studying" : element?.end_date
+      }</p>
+    </div>
+       
+
+        `;
+  });
+  let educationHtml = "";
+
+  if (eductaions?.length !== 0) {
+    educationHtml = `
+    <div class="w-[50%]">
+    <!-- education -->
+    <div class="px-2 flex">
+        <div class="">
+          <h1 class="font-semibold uppercase text-xl mt-4 text-red-400">
+            Education
+          </h1>
+          <div>
+           
+          ${myEducation}
+          </div>
+        </div>
+      </div>
+  `;
+  }
+
+  let myProjects = "";
+
+  projects?.forEach((element) => {
+    myProjects =
+      myProjects +
+      `
+    
+      <div class="mt-1 p-1.5 text-justify">
+      <h3 class="text-base text-red-400 font-semibold">${element?.title}</h3>
+      <div class="flex justify-between  gap-x-44">
+        <p class="text-base text-black">${element?.link}</p>
+        <p class="text-base text-black">${element?.start_date}-${element?.end_date}</p>
+      </div>
+      <p class="text-sm w-80% text-black font-medium">
+        ${element?.description}
+      </p>
+    </div>
+      
+
+        `;
+  });
+  let projectHtml = "";
+
+  if (projects?.length !== 0) {
+    projectHtml = `
+    <div class="w-[50%]">
+    <!-- Projects -->
+    <div class="px-2 flex">
+        <div>
+          <h1 class="font-semibold uppercase text-xl mt-4 text-red-400">Projects</h1>
+          <div>
+          ${myProjects}
+          </div>
+        </div>
+      </div>
+      
+</div>
+  `;
+  }
+
+  let myExperience = "";
+
+  experiences?.forEach((element) => {
+    myExperience =
+      myExperience +
+      `
+  
+      <div class="mt-1 p-1.5 text-justify">
+      <h3 class="text-base text-red-400 font-semibold">${
+        element?.company_name
+      }</h3>
+      <div class="flex justify-between gap-x-44">
+        <p class="text-base text-black">${element?.designation}</p>
+        <p class="text-base text-black">${element?.start_date}-${
+        element?.is_current ? "Present" : element?.end_date
+      }</p>
+      </div>
+      <p class="text-sm w-[80%] text-black font-medium">
+      ${element?.description}
+        
+      </p>
+    </div>
+       
+        `;
+  });
+  let experienceHtml = "";
+
+  if (experiences?.length !== 0) {
+    experienceHtml = `
+    <div class="w-[50%]">
+    <!-- workexp -->
+    <div class="px-2 flex">
+    <div>
+      <h1 class="font-semibold uppercase text-xl mt-4 text-red-400">Work Experience</h1>
+      <div>
+     
+     ${myExperience}
+      </div>
+    </div>
+  </div>
+      
+</div>
+ 
+  `;
+  }
+  let mySocial = "";
+
+  social_links?.forEach((element) => {
+    mySocial =
+      mySocial +
+      `
+      <div>
+      <a class="px-2" href=${element?.link}
+      >${element?.name}</a>
+    </div>
+     
+    
+
+        `;
+  });
+
+  let socialHtml = "";
+
+  if (social_links?.length !== 0) {
+    socialHtml = `
+    
+             ${mySocial}
+            
+  `;
+  }
+
+  let myLanguage = "";
+
+  languages?.forEach((element) => {
+    myLanguage =
+      myLanguage +
+      `
+      <div class="mt-1 flex bg-red-400 rounded-md text-white font-semibold gap-x-4 px-2">
+      <p class="text-base">${element?.language}</p>
+    </div>
+    
+    
+   
+    
+
+        `;
+  });
+  let languageHtml = "";
+
+  if (languages?.length !== 0) {
+    languageHtml = `
+    <div class="w-[50%]">
+              <!-- language -->
+              <div class="px-4">
+                  <h1 class="font-semibold uppercase text-xl mt-4 text-red-400">
+                    language
+                  </h1>
+                  <div class="flex gap-x-4">
+                   
+                   ${myLanguage}
+                  </div>
+                </div>
+                
+          </div>
+  
+  `;
+  }
+
+  let myInterests = "";
+
+  interests?.forEach((element) => {
+    myInterests =
+      myInterests +
+      `
+      <p class="text-sm px-2 bg-red-400 rounded-md font-semibold text-white">${element?.interest}</p>
+        
+        `;
+  });
+
+  let interestHtml = "";
+
+  if (interests?.length !== 0) {
+    interestHtml = `
+    <div class="px-4">
+    <h1 class="font-semibold uppercase text-xl mt-4 text-red-400">Interests</h1>
+    <div class="flex gap-x-3">
+    ${myInterests}
+    </div>
+  </div>
+    
+  `;
+  }
+
+  let mySkills = skills
+    ?.map((item) => {
+      return `
+      <p class="text-sm rounded-md text-white font-semibold p-2 w-fit bg-red-400"> ${item?.skill}</p>
+    
+      `;
+    })
+    ?.join("");
+  let skillHtml = "";
+
+  if (skills?.length !== 0) {
+    skillHtml = `
+    <div class="w-[50%]">
+    <!-- skill -->
+    <div class="px-2 flex">
+        <div>
+          <h1 class="font-semibold uppercase text-xl mt-3 text-red-400">Skills</h1>
+          <div class="flex flex-col justify-start gap-y-2 gap-x-10 items-start h-32 flex-wrap mt-2.5">
+           ${mySkills}
+          
+          </div>
+        </div>
+      </div>
+      
+</div>
+    `;
+  }
+
+  let myCertificate = certification
+    ?.map((item) => {
+      return `
+      <li>${item?.certificate}</li>
+      
+      `;
+    })
+    ?.join("");
+
+  let certificateHtml = "";
+
+  if (certification?.length !== 0) {
+    certificateHtml = `
+    <div class="w-[50%]">
+    <!-- certificate -->
+    <div class="px-4">
+        <h1 class="font-semibold uppercase text-xl mt-4 text-red-400">
+          Certification
+        </h1>
+        <div>
+          <ul class="list-disc flex gap-x-1 list-inside">
+      ${myCertificate}
+
+          
+          </ul>
+        </div>
+      </div>
+      
+</div>
+    
+    `;
+  }
+
+    } else{
+        console.log("error");
+    }
+  </script>
+  </body>
+</html>
