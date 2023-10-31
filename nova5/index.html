@@ -28,7 +28,7 @@
     if(Object.keys(data).length>=1){
         let res = data
          
-        const videoQuestions = video_questions?.filter(
+        const videoQuestions = res?.video_questions?.filter(
     (question) => question?.video !== null
   );
 
@@ -67,7 +67,7 @@
 
   let myEducation = "";
 
-  eductaions?.forEach((element) => {
+  res?.eductaions?.forEach((element) => {
     myEducation =
       myEducation +
       `
@@ -87,7 +87,7 @@
   });
   let educationHtml = "";
 
-  if (eductaions?.length !== 0) {
+  if (res?.eductaions?.length !== 0) {
     educationHtml = `
     <div class="w-[50%]">
     <!-- education -->
@@ -107,7 +107,7 @@
 
   let myProjects = "";
 
-  projects?.forEach((element) => {
+  res?.projects?.forEach((element) => {
     myProjects =
       myProjects +
       `
@@ -129,7 +129,7 @@
   let projectHtml = "";
 
   if (projects?.length !== 0) {
-    projectHtml = `
+    res?.projectHtml = `
     <div class="w-[50%]">
     <!-- Projects -->
     <div class="px-2 flex">
@@ -147,7 +147,7 @@
 
   let myExperience = "";
 
-  experiences?.forEach((element) => {
+  res?.experiences?.forEach((element) => {
     myExperience =
       myExperience +
       `
@@ -172,7 +172,7 @@
   });
   let experienceHtml = "";
 
-  if (experiences?.length !== 0) {
+  if (res?.experiences?.length !== 0) {
     experienceHtml = `
     <div class="w-[50%]">
     <!-- workexp -->
@@ -192,7 +192,7 @@
   }
   let mySocial = "";
 
-  social_links?.forEach((element) => {
+  res?.social_links?.forEach((element) => {
     mySocial =
       mySocial +
       `
@@ -208,7 +208,7 @@
 
   let socialHtml = "";
 
-  if (social_links?.length !== 0) {
+  if (res?.social_links?.length !== 0) {
     socialHtml = `
     
              ${mySocial}
@@ -218,7 +218,7 @@
 
   let myLanguage = "";
 
-  languages?.forEach((element) => {
+  res?.languages?.forEach((element) => {
     myLanguage =
       myLanguage +
       `
@@ -234,7 +234,7 @@
   });
   let languageHtml = "";
 
-  if (languages?.length !== 0) {
+  if (res?.languages?.length !== 0) {
     languageHtml = `
     <div class="w-[50%]">
               <!-- language -->
@@ -255,7 +255,7 @@
 
   let myInterests = "";
 
-  interests?.forEach((element) => {
+  res?.interests?.forEach((element) => {
     myInterests =
       myInterests +
       `
@@ -266,7 +266,7 @@
 
   let interestHtml = "";
 
-  if (interests?.length !== 0) {
+  if (res?.interests?.length !== 0) {
     interestHtml = `
     <div class="px-4">
     <h1 class="font-semibold uppercase text-xl mt-4 text-red-400">Interests</h1>
@@ -278,7 +278,7 @@
   `;
   }
 
-  let mySkills = skills
+  let mySkills = res?.skills
     ?.map((item) => {
       return `
       <p class="text-sm rounded-md text-white font-semibold p-2 w-fit bg-red-400"> ${item?.skill}</p>
@@ -288,7 +288,7 @@
     ?.join("");
   let skillHtml = "";
 
-  if (skills?.length !== 0) {
+  if (res?.skills?.length !== 0) {
     skillHtml = `
     <div class="w-[50%]">
     <!-- skill -->
@@ -306,7 +306,7 @@
     `;
   }
 
-  let myCertificate = certification
+  let myCertificate = res?.certification
     ?.map((item) => {
       return `
       <li>${item?.certificate}</li>
@@ -317,7 +317,7 @@
 
   let certificateHtml = "";
 
-  if (certification?.length !== 0) {
+  if (res?.certification?.length !== 0) {
     certificateHtml = `
     <div class="w-[50%]">
     <!-- certificate -->
