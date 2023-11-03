@@ -186,7 +186,7 @@
   });
   let experienceHtml = "";
 
-  if (res?experiences?.length !== 0) {
+  if (res?.experiences?.length !== 0) {
     experienceHtml = `
     <div class="px-2">
     <h1
@@ -374,14 +374,14 @@
             <header class="flex justify-start gap-x-6 items-center">
               <img
                 class="rounded-md w-28"
-                src=${profile_picture}
+                src=${res?.profile_picture}
                 alt="Profile Image"
               />
               <div class="bg-teal-400 text-white">
-                <h1 class="font-semibold text-2xl">${full_name}</h1>
-                <h3 class="font-medium text-lg">${position}</h3>
+                <h1 class="font-semibold text-2xl">${res?.full_name}</h1>
+                <h3 class="font-medium text-lg">${res?.position}</h3>
                 <p class="font-medium text-base">
-                  ${summary}
+                  ${res?.summary}
                 </p>
               </div>
             </header>
@@ -393,9 +393,9 @@
               <section
                 class="flex flex-col px-2 mt-3 font-semibold text-base text-gray-700 justify-around items-start"
               >
-                <h3>Email:${email}</h3>
-                <h3>Phone:${mobile_no}</h3>
-                <h3>City:${address}</h3>
+                <h3>Email:${res?.email}</h3>
+                <h3>Phone:${res?.mobile_no}</h3>
+                <h3>City:${res?.address}</h3>
                ${socialHtml}
               </section>
             </div>
