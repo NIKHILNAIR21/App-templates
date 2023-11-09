@@ -29,7 +29,7 @@ if(Object.keys(data).length>=1){
    let res = data
    let myEducation = "";
 
-eductaions?.forEach((element) => {
+res?.eductaions?.forEach((element) => {
   myEducation =
     myEducation +
     `        <div>
@@ -45,7 +45,7 @@ eductaions?.forEach((element) => {
 </div>`;
 });
 let educationHtml = "";
-if (eductaions?.length !== 0) {
+if (res?.eductaions?.length !== 0) {
   educationHtml = `
   <div>
   <h2
@@ -60,7 +60,7 @@ ${myEducation}
 }
 
 let myProjects = "";
-projects?.forEach((element) => {
+res?.projects?.forEach((element) => {
   myProjects =
     myProjects +
     `
@@ -83,7 +83,7 @@ projects?.forEach((element) => {
       `;
 });
 let projectHtml = "";
-if (projects?.length !== 0) {
+if (res?.projects?.length !== 0) {
   projectHtml = `  <div class="flex-col flex gap-2">
 <h2
   class="text-base font-bold text-red-500 p-1 border-b-4 border-red-500 w-fit"
@@ -98,7 +98,7 @@ ${myProjects}
 
 let myExperience = "";
 
-experiences?.forEach((element) => {
+res?.experiences?.forEach((element) => {
   myExperience =
     myExperience +
     `            <div>
@@ -122,7 +122,7 @@ experiences?.forEach((element) => {
 
 let experienceHtml = "";
 
-if (experiences?.length !== 0) {
+if (res?.experiences?.length !== 0) {
   experienceHtml = `
   <div class="flex-col flex gap-2">
   <h2
@@ -137,7 +137,7 @@ if (experiences?.length !== 0) {
 }
 
 let mySocial = "";
-social_links?.forEach((element) => {
+res?.social_links?.forEach((element) => {
   mySocial =
     mySocial +
     `<a class="text-sm" href="${element?.link}">${element?.name}</a>`;
@@ -145,7 +145,7 @@ social_links?.forEach((element) => {
 
 let socialHtml = "";
 
-if (social_links?.length !== 0) {
+if (res?.social_links?.length !== 0) {
   socialHtml = `  
   <div class="flex gap-3 flex-wrap">
   ${mySocial}
@@ -153,7 +153,7 @@ if (social_links?.length !== 0) {
 }
 
 let myLanguage = "";
-languages?.forEach((element) => {
+res?.languages?.forEach((element) => {
   myLanguage =
     myLanguage +
     `
@@ -162,7 +162,7 @@ languages?.forEach((element) => {
 });
 
 let languageHtml = "";
-if (languages?.length !== 0) {
+if (res?.languages?.length !== 0) {
   languageHtml = `
       <div class="mt-2">
       <h2 class="text-base font-bold text-red-500 p-1 border-b-4 border-red-500 w-fit">Language</h2>
@@ -173,12 +173,12 @@ if (languages?.length !== 0) {
       `;
 }
 let myInterests = "";
-interests?.forEach((element) => {
+res?.interests?.forEach((element) => {
   myInterests = myInterests + `<p class="text-sm">${element?.interest}</p>`;
 });
 
 let interestHtml = "";
-if (interests?.length !== 0) {
+if (res?.interests?.length !== 0) {
   interestHtml = `
         <div class="mt-2">
         <h2 class="text-base font-bold text-red-500 p-1 border-b-4 border-red-500 w-fit">Interests</h2>
@@ -188,7 +188,7 @@ if (interests?.length !== 0) {
       </div>
         `;
 }
-let mySkills = skills
+let mySkills = res?.skills
   ?.map((item) => {
     return `
      <p class="text-sm rounded p-1 border border-red-500">${item?.skill}</p>`;
@@ -197,7 +197,7 @@ let mySkills = skills
 
 let skillHtml = "";
 
-if (skills?.length !== 0) {
+if (res?.skills?.length !== 0) {
   skillHtml = `
           <div>
           <h2
@@ -211,7 +211,7 @@ if (skills?.length !== 0) {
         </div>
           `;
 }
-let myCertificate = certification
+let myCertificate = res?.certification
   ?.map((item) => {
     return `
             <p class="text-sm">${item?.certificate}</p> 
@@ -221,7 +221,7 @@ let myCertificate = certification
 
 let certificateHtml = "";
 
-if (certification?.length !== 0) {
+if (res?.certification?.length !== 0) {
   certificateHtml = `
           <div class="mt-2">
           <h2 class="text-base font-bold text-red-500 p-1 border-b-4 border-red-500 w-fit">Certifications</h2>
@@ -240,10 +240,10 @@ const dynamicContent = document.getElementById("dynamic-content");
   <div class="main-container">
     <div class="header flex p-3 item-center justify-evenly bg-slate-700">
       <div class="w-[50%]">
-        <h1 class="text-xl text-white font-semibold">${full_name}</</h1>
-        <h2 class="text-base text-red-500 font-semibold">${position}</h2>
+        <h1 class="text-xl text-white font-semibold">${res?.full_name}</</h1>
+        <h2 class="text-base text-red-500 font-semibold">${res?.position}</h2>
         <p class="text-sm text-justify text-white">
-        ${summary}
+        ${res?.summary}
         </p>
       </div>
       <!-- photo -->
@@ -252,8 +252,8 @@ const dynamicContent = document.getElementById("dynamic-content");
       >
         <img
           class="w-full h-full rounded-tr-full rounded-tl-full rounded-bl-full rounded-br-md"
-          src=${profile_picture}
-          alt=${full_name}
+          src=${res?.profile_picture}
+          alt=${res?.full_name}
         />
       </div>
     </div>
@@ -261,9 +261,9 @@ const dynamicContent = document.getElementById("dynamic-content");
     <div
       class="flex gap-3 p-2 bg-slate-900 text-white justify-evenly text-sm flex-wrap"
     >
-    <p>${email}</p>
-    <p>${mobile_no}</p>
-    <p>${address}</p>
+    <p>${ res?.email}</p>
+    <p>${ res?.mobile_no}</p>
+    <p>${ res?.address}</p>
       ${socialHtml}
     </div>
     <!-- resume-section -->
