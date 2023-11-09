@@ -10,6 +10,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <title>Document</title>
+    <style>
+      @page{
+          size: A4;
+          margin: 0;
+          padding: 0;
+      }
+  </style>
 </head>
 <body>
         <div class="A4 w-[800px] mx-auto" id="dynamic-content">
@@ -296,24 +303,9 @@ ${myVideos}
     `;
   }
 
-  return `
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-      <title>My Resume</title>
-      <script src="https://cdn.tailwindcss.com"></script>
-      <style>
-        @page {
-          size: A4;
-          margin: 0;
-          padding: 0;
-        }
-      </style>
-  </head>
-  <body class="">
+  const dynamicContent = document.getElementById("dynamic-content");
+    dynamicContent.innerHTML = `
+
       <div class="p-4 ">
           <!-- header -->
           <header class="flex justify-between item-start">
@@ -361,8 +353,7 @@ ${myVideos}
             {videoProfileHtml}
             -->
         </div>
-  </body>
-  </html>
+
 `;
 }
   </script>

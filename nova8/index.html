@@ -9,6 +9,13 @@
    />
    <script src="https://cdn.tailwindcss.com"></script>
     <title>Document</title>
+    <style>
+      @page{
+          size: A4;
+          margin: 0;
+          padding: 0;
+      }
+  </style>
 </head>
 <body>
     <div class="A4 w-[800px] mx-auto" id="dynamic-content">
@@ -288,23 +295,9 @@ ${mySocial}
     `;
   }
 
-  return `
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <script src="https://cdn.tailwindcss.com"></script>
-      <title>Document</title>
-      <style>
-        @page {
-          size: A4;
-          margin: 0;
-          padding: 0;
-        }
-      </style>
-    </head>
-    <body>
+  const dynamicContent = document.getElementById("dynamic-content");
+    dynamicContent.innerHTML =`
+
       <div class=" bg-white px-8 py-4 ">
         <header class="text-center font-serif">
           <div>
@@ -323,7 +316,7 @@ ${mySocial}
           <h2 class="text-base text-left ">Summary</h2>
           <span class="bg-black w-[100%] h-[2.3px] block"></span>
           <p class="text-justify text-xs">
-           ${summary}
+           ${res?.summary}
           </p>
         </div>
         <!-- skill -->
@@ -347,8 +340,6 @@ ${mySocial}
         -->
         </div>
       </div>
-    </body>
-  </html>
 `
 }
     </script>
