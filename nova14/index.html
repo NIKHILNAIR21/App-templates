@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.min.css"
+   />
+   <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+      @page{
+          size: A4;
+          margin: 0;
+          padding: 0;
+      }
+  </style>
+</head>
+<body>
+    <div class="A4 w-[800px] mx-auto" id="dynamic-content">
+        <!-- This is where the dynamic content will be displayed -->
+    </div>
+    <script>
+const data = {{data|safe}}
+
+if(Object.keys(data).length>=1){
+    let res =data
+    res?.eductaions?.forEach((element) => {
+    myEducation =
+      myEducation +
+      `
+        <div>
+        <div class="p-1">
+            <p class="text-base text-pink-900 font-bold">${element?.course}</p>
+            <h1 class="text-sm ">${element?.university}</h1>
+          </div>
+          <div class="w-[40%]  p-1">
+            <p class=" text-sm">${element?.start_date} | ${
+        element?.is_current ? "Currently studying" : element?.end_date
+      }</p>
+          </div>
+    </div>
+        `;
+  });
+
+  let educationHtml = "";
+  if (res?.eductaions?.length !== 0) {
+    educationHtml = `
+    <div>
+            <h2
+              class="text-base font-bold text-pink-900 p-1  w-fit"
+            >
+              Education
+            </h2>
+            <span class="bg-pink-900 w-full h-[2.3px]  block"></span>
+     
+${myEducation}
+          </div>
+    `;
+  }
+  let myProjects = "";
+  res?.projects?.forEach((element) => {
+    myProjects =
+      myProjects +
+      `
+    <div>
+    <div class="flex justify-between">
+      <div>
+        <h1 class="text-sm font-semibold">${element?.title}</h1>
+        <a href="${element?.link}" class="text-sm font-semibold">Project Link</a>
+      </div>
+
+      <p class="text-sm text-right">${element?.start_date}|${element?.end_date}</p>
+    </div>
+    <div class="w-[95%]">
+      <p class="text-sm text-justify">
+      ${element?.description}
+      </p>
+    </div>
+  </div>
+    `;
+  });
+
+  let projectHtml = "";
+  if (res?.projects?.length !== 0) {
+    projectHtml = `
+      <div class=" p-1">
+      <h2 class="font-bold text-pink-900">Project</h2>
+      <span class="bg-pink-900 w-96 h-[2.3px]  block"></span>
+      <!-- exp -->
+${myProjects}    
+    </div>
+      `;
+  }
+
+  let myExperience = "";
+
+  res?.experiences?.forEach((element) => {
+    myExperience =
+      myExperience +
+      `
+     <div>
+     <div class="flex justify-between">
+       <div>
+         <h1 class="text-sm font-semibold">${element?.company_name}</h1>
+         <h2 class="text-sm font-semibold">${element?.designation}</h2>
+       </div>
+
+       <p class="text-sm text-right">${element?.start_date}|${
+        element?.is_current ? "Present" : element?.end_date
+      }</p>
+     </div>
+     <div class="w-[95%]">
+       <p class="text-sm text-justify">
+       ${element?.description}
+       </p>
+     </div>
+   </div>
+     `;
+  });
+  let experienceHtml = "";
+
+  if (res?.experiences?.length !== 0) {
+    experienceHtml = `
+       <!-- work exp -->
+       <div class=" p-1">
+         <h2 class="font-bold text-pink-900">Work Experience</h2>
+         <span class="bg-pink-900 w-96 h-[2.3px]  block"></span>
+         <!-- exp -->
+         ${myExperience}
+       </div>
+       `;
+  }
+  let mySocial = "";
+  res?.social_links?.forEach((element) => {
+    mySocial =
+      mySocial +
+      `<a href="${element?.link}">${element?.name}</a>`;
+  });
+
+  let socialHtml= "";
+
+  if (res?.social_links?.length !== 0) {
+    socialHtml = `  
+  <div class="flex gap-2 text-sm flex-wrap">
+  ${mySocial}
+  </div>`;
+  }
+
+  let myLanguage = "";
+  res?.languages?.forEach((element) => {
+    myLanguage =
+      myLanguage +
+      `
+      <p class="text-sm text-pink-900 font-semibold">${element?.language}</p>
+      `;
+  });
+
+  let languageHtml = "";
+  if (res?.languages?.length !== 0) {
+    languageHtml = `
+        <div class="mt-2">
+        <h2 class="text-base font-bold text-pink-900 p-1 w-fit">Language</h2>
+        <span class="bg-pink-900 w-full h-[2.3px]  block"></span>
+        <div class="flex p-1 gap-4  flex-wrap">
+        ${myLanguage}  
+        </div>
+       </div>
+        `;
+  }
+  let myInterests = "";
+  res?.interests?.forEach((element) => {
+    myInterests = myInterests + `<p class="text-sm text-pink-900 font-semibold">${element?.interest}</p>`;
+  });
+
+  let interestHtml = "";
+  if (res?.interests?.length !== 0) {
+    interestHtml = `
+          <div class="mt-2">
+          <h2 class="text-base font-bold text-pink-900 p-1 w-fit">Interests</h2>
+          <span class="bg-pink-900 w-full h-[2.3px]  block"></span>
+          <div class="flex flex-wrap gap-4 p-1">
+        ${myInterests}  
+            </div>
+        </div>
+          `;
+  }
+  let mySkills = res?.skills
+    ?.map((item) => {
+      return `
+       <p class="text-sm bg-pink-900 text-white rounded p-1">${item?.skill}</p>`;
+    })
+    ?.join("");
+
+  let skillHtml = "";
+
+  if (res?.skills?.length !== 0) {
+    skillHtml = `
+            <div>
+            <h2
+              class="text-base font-bold text-pink-900 p-1 w-fit"
+            >
+              Skills
+            </h2>
+            <span class="bg-pink-900 w-full h-[2.3px]  block"></span>
+            <div class="flex gap-3 my-2  flex-wrap">
+              ${mySkills}                 
+            </div>
+          </div>
+            `;
+  }
+  let myCertificate = res?.certification
+    ?.map((item) => {
+      return `
+              <p class="text-sm  text-pink-900 font-semibold">${item?.certificate}</p> 
+              `;
+    })
+    ?.join("");
+
+  let certificateHtml = "";
+
+  if (res?.certification?.length !== 0) {
+    certificateHtml= `
+            <div class="mt-2">
+            <h2 class="text-base font-bold text-pink-900 p-1 w-fit">
+            Certifications
+          </h2>
+          <span class="bg-pink-900 w-full h-[2.3px]  block"></span>
+            <div class="flex flex-col gap-1 p-1">
+${myCertificate}
+            </div>
+          </div>
+          
+              
+              `;
+  }
+
+
+   const dynamicContent = document.getElementById("dynamic-content");
+    dynamicContent.innerHTML = `
+
+    <div class="main-container w-[800px] mx-auto p-2.5 bg-white ">
+      <header>
+        <h2 class="text-xl font-semibold">${res?.full_name}</h2>
+        <h3 class="text-base">${res?.position}</h3>
+
+        <div>
+          <p class="text-white text-sm bg-pink-900 p-2 rounded-md">
+          ${res?.summary}
+          </p>
+        </div>
+        <!-- contact -->
+        <div class="p-2 bg-amber-500 flex-wrap justify-between rounded-md text-sm flex gap-2">
+          <p>${res?.email}</p>
+          <p>${res?.mobile_no}</p>
+          <p>${res?.address}</p>
+          ${socialHtml}
+        </div>
+      </header>
+      <div class="flex  gap-4">
+        <div class="left w-[50%]">
+          <!-- work exp -->
+ ${experienceHtml}
+          <!-- project -->
+${projectHtml}
+        </div>
+        <div class="right w-[50%] ">
+                            <!-- edu -->
+${educationHtml}
+          <!-- skill -->
+         ${skillHtml}
+          <!-- Interest -->
+      ${interestHtml}
+                 <!-- Languages -->
+               ${languageHtml}
+                <!-- certificates -->
+             ${certificateHtml}
+        </div>
+      </div>
+    </div>`
+}
+    </script>
+</body>
+</html>
