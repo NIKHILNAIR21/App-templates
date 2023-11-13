@@ -27,38 +27,38 @@
 
 if(Object.keys(data).length>=1){
     let res = data
-    const videoQuestions = video_questions?.filter(
-    (question) => question?.video !== null
-  );
+//     const videoQuestions = video_questions?.filter(
+//     (question) => question?.video !== null
+//   );
 
-  let myVideos = "";
+//   let myVideos = "";
 
-  videoQuestions?.forEach((element) => {
-    myVideos =
-      myVideos +
-      `
-      <li class="text-sky-600 text-sm my-2 ">${element?.question?.question} <a class="border-2 text-sm border-sky-600 rounded-lg p-0.5 font-medium" href=${element?.video}>Answer</a></li>
-        `;
-  });
+//   videoQuestions?.forEach((element) => {
+//     myVideos =
+//       myVideos +
+//       `
+//       <li class="text-sky-600 text-sm my-2 ">${element?.question?.question} <a class="border-2 text-sm border-sky-600 rounded-lg p-0.5 font-medium" href=${element?.video}>Answer</a></li>
+//         `;
+//   });
 
-  let videoProfileHtml = "";
+//   let videoProfileHtml = "";
 
-  if (videoQuestions?.length !== 0) {
-    videoProfileHtml = `
-    <div class="mt-2">
-                <h2 class="text-base font-semibold">Video Profile</h2>
-                <ul>
-${myVideos}
-                </ul>
-              </div>
+//   if (videoQuestions?.length !== 0) {
+//     videoProfileHtml = `
+//     <div class="mt-2">
+//                 <h2 class="text-base font-semibold">Video Profile</h2>
+//                 <ul>
+// ${myVideos}
+//                 </ul>
+//               </div>
 
 
    
-  `;
-  }
-  else{
-    videoProfileHtml= `<span></span>`
-  }
+//   `;
+//   }
+//   else{
+//     videoProfileHtml= `<span></span>`
+//   }
 
   let myEducation = "";
 

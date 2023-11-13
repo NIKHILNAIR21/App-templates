@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.min.css"
+   />
+   <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+      @page{
+          size: A4;
+          margin: 0;
+          padding: 0;
+      }
+  </style>
+</head>
+<body>
+    <div class="A4 w-[800px] mx-auto" id="dynamic-content">
+        <!-- This is where the dynamic content will be displayed -->
+    </div>
+    <script>
+                    const data = {{data|safe}}
+
+if(Object.keys(data).length>=1){
+    let res =data
+    let myEducation = "";
+
+  res?.eductaions?.forEach((element) => {
+    myEducation =
+      myEducation +
+      `
+      <div class="w-[50%] mx-2">
+      <h3 class="text-sm font-bold">${element?.university}</h3>
+      <p class="text-white bg-sky-800 text-sm p-1 rounded-md">
+      ${element?.course}
+      | ${element?.start_date}-${
+        element?.is_current ? "Currently studying" : element?.end_date
+      } 
+      </p>
+    </div>
+     
+       
+
+        `;
+  });
+  let educationHtml = "";
+
+  if (res?.eductaions?.length !== 0) {
+    educationHtml = `
+    <h2 class="text-base font-bold text-gray-700">Education</h2>
+    <div class="mt-1 flex justify-between">
+  ${myEducation}
+   </div>
+
+  `;
+  }
+
+  let myProjects = "";
+
+  res?.projects?.forEach((element) => {
+    myProjects =
+      myProjects +
+      `
+      <div class="w-[50%] mx-2">
+      <h3 class="text-base font-bold">${element?.title}</h3>
+      <p class="text-gray-600 text-base">${element?.link} | ${element?.start_date}-${element?.end_date}</p>
+      <p class="text-white text-sm bg-sky-800 p-1 rounded-md">
+        ${element?.description}
+      </p>
+    </div>
+   
+      
+
+        `;
+  });
+  let projectHtml = "";
+
+  if (res?.projects?.length !== 0) {
+    projectHtml = `
+
+    <h2 class="text-base font-bold text-gray-700">Projects</h2>
+    <div class="mt-1 flex justify-between">
+     ${myProjects}
+    </div>
+
+   
+  `;
+  }
+
+  let myExperience = "";
+
+  res?.experiences?.forEach((element) => {
+    myExperience =
+      myExperience +
+      `
+      <div class="w-[50%] mx-2">
+      <h3 class="text-sm font-bold">${
+        element?.company_name
+      }</h3>
+      <p class="text-sm text-gray-600">${element?.designation} | ${element?.start_date}-${
+        element?.is_current ? "Present" : element?.end_date
+      }</p>
+      <p class="text-white text-sm rounded-md p-1 w-fit bg-sky-800">
+      ${element?.description}
+         
+      </p>
+    </div>
+
+      
+       
+        `;
+  });
+  let experienceHtml = "";
+
+  if (res?.experiences?.length !== 0) {
+    experienceHtml = `
+    <h2 class="text-base mt-1 font-bold text-gray-700">Work Experience</h2>
+    <div class="mt-0.5 flex  justify-between">
+     
+    ${myExperience}
+   
+   </div>
+
+  
+ 
+  `;
+  }
+  let mySocial = "";
+
+  res?.social_links?.forEach((element) => {
+    mySocial =
+      mySocial +
+      `
+    
+    
+    
+      <a class="text-blue-100 font-semibold hover:underline px-1 text-sm"   href=${element?.link}
+      >${element?.name}</a>
+  
+     
+    
+
+        `;
+  });
+
+  let socialHtml = "";
+
+  if (res?.social_links?.length !== 0) {
+    socialHtml = `
+    <div class="flex justify-center mt-2">
+    ${mySocial}
+  </div>
+   
+            
+            
+  `;
+  }
+
+  let myLanguage = "";
+
+  res?.languages?.forEach((element) => {
+    myLanguage =
+      myLanguage +
+      `
+      <p class="text-gray-600 text-sm">${element?.language}</p>
+        `;
+  });
+  let languageHtml = "";
+
+  if (res?.languages?.length !== 0) {
+    languageHtml = `
+    <div class="mt-1 w-[50%]">
+    <h2 class="text-base font-bold text-gray-700">Languages</h2>
+    <div class="mt-2 flex flex-wrap gap-2">
+      ${myLanguage}
+    </div>
+  </div>
+
+  
+  
+  `;
+  }
+
+  let myInterests = "";
+
+  res?.interests?.forEach((element) => {
+    myInterests =
+      myInterests +
+      `
+      <p class="text-gray-600 text-sm">${element?.interest}</p>
+      
+
+
+        
+        `;
+  });
+
+  let interestHtml = "";
+
+  if (res?.interests?.length !== 0) {
+    interestHtml = `
+    <div class="mt-1 w-[50%]">
+            <h2 class="text-base font-bold text-gray-700">Interests</h2>
+            <div class="mt-1 flex flex-wrap gap-2">
+   ${myInterests}
+            </div>
+          </div>
+    
+  `;
+  }
+
+  let mySkills = res?.skills
+    ?.map((item) => {
+      return `
+      <span class="px-1 py-1 text-sm bg-sky-800 text-white rounded-md">${item?.skill}</span>    
+      `;
+    })
+    ?.join("");
+  let skillHtml = "";
+
+  if (skills?.length !== 0) {
+    skillHtml = `
+    <div class="mt-1">
+    <h2 class="text-base font-bold text-gray-700">Skills</h2>
+    <div class="flex flex-wrap gap-2 mt-2">
+    ${mySkills}
+    </div>
+  </div>
+    `;
+  }
+
+  let myCertificate = res?.certification
+    ?.map((item) => {
+      return `
+      <li class="text-sm">${item?.certificate}</li>
+      
+      `;
+    })
+    ?.join("");
+
+  let certificateHtml = "";
+
+  if (res?.certification?.length !== 0) {
+    certificateHtml = `
+    <div class="mt-1 w-[50%]">
+    <h2 class="text-base font-bold text-gray-700">Certifications</h2>
+    <ul class="list-disc list-inside mt-2">
+    ${myCertificate}
+    </ul>
+  </div> 
+    `;
+  }
+
+  const dynamicContent = document.getElementById("dynamic-content");
+    dynamicContent.innerHTML = `
+
+      <div class=" m-0 bg-white">
+        <!-- Header -->
+        <div class="text-center p-2 bg-sky-800">
+          <img
+            src=${res?.profile_picture}
+            alt=${res?.full_name}
+            class="w-20 h-20 mx-auto rounded-full"
+          />
+          <h1 class="text-xl capitalize font-bold text-white mt-1">${res?.full_name}</h1>
+          <p class="text-sm capitalize text-white">${res?.position}</p>
+        </div>
+  
+        <!-- Contact -->
+        <div class="bg-sky-800">
+          <div class="flex justify-center gap-x-4 text-white">
+            <a href="mailto:your.email@example.com" class="hover:text-blue-600"
+              >${res?.email}</a
+            >
+            <span>|</span>
+            <span>${res?.mobile_no}</span>
+            <span>|</span>
+            <span>${res?.address}</span>
+          </div>
+      ${socialHtml}
+        </div>
+        <div class="px-4">     
+        <div>
+        <h1 class="text-base font-bold  text-gray-700">About</h1>
+        <p>
+       ${res?.summary}
+        </p>
+      </div>
+      <!-- Skills -->
+   ${skillHtml}
+
+      <!-- Work Experience -->
+     ${experienceHtml}
+
+      <!-- Projects -->
+   ${projectHtml}
+
+      <!-- Education -->
+ ${educationHtml}
+
+      <!-- Languages -->
+      <div class="flex gap-1 justify-around">
+        ${languageHtml}
+    ${interestHtml}
+      </div>
+
+      <!-- Certifications -->
+      <div class="flex">
+       ${certificateHtml}
+      <!-- Video profile 
+      
+      {videoProfileHtml}
+      -->
+      </div></div>
+   
+  
+    
+      </div>
+`;
+}
+    </script>
+</body>
+</html>
