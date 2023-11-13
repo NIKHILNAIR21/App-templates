@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.min.css"
+   />
+   <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+      @page{
+          size: A4;
+          margin: 0;
+          padding: 0;
+      }
+  </style>
+</head>
+<body>
+    <div class="A4 w-[800px] mx-auto" id="dynamic-content">
+        <!-- This is where the dynamic content will be displayed -->
+    </div>
+    <script>
+      const data = {{data|safe}}
+
+if(Object.keys(data).length>=1){
+    let res =data
+    let myEducation = "";
+
+res?.eductaions?.forEach((element) => {
+  myEducation =
+    myEducation +
+    `
+    <div class="mt-1 p-1 rounded">
+    <div></div>
+    <h3 class="text-sm bg-black text-white p-1 rounded-lg w-fit font-medium">${element?.university}</h3>
+    <p class="text-sm text-gray-600">
+    ${element?.course}
+    </p>
+    <p class="text-sm text-gray-600">${element?.start_date}-${
+      element?.is_current ? "Currently studying" : element?.end_date
+    }</p>
+  </div>
+
+  
+     
+
+      `;
+});
+let educationHtml = "";
+
+if (res?.eductaions?.length !== 0) {
+  educationHtml = `
+  <div class="flex">
+                    
+  <div class="">
+    <h1 class="font-semibold uppercase text-base mt-2">
+      Education
+    </h1>
+    <div>
+    ${myEducation}
+    </div>
+  </div>
+</div>    
+</div>
+ 
+`;
+}
+
+let myProjects = "";
+
+res?.projects?.forEach((element) => {
+  myProjects =
+    myProjects +
+    `
+    <div class="mt-1 p-1.5 text-justify">
+    <h3 class="text-base text-white bg-black w-fit p-1 rounded-md font-semibold">${element?.title}</h3>
+    <div class="flex gap-2">
+      <p class="text-base text-black">${element?.link}</p>
+      <p class="text-base text-black">${element?.start_date}-${element?.end_date}</p>
+    </div>
+    <p class="text-xs w-80% text-black font-medium">
+    ${element?.description}
+      
+    </p>
+  </div>
+   
+
+    
+
+      `;
+});
+let projectHtml = "";
+
+if (res?.projects?.length !== 0) {
+  projectHtml = `
+  <div class=" flex">
+  <div>
+    <h1 class="font-semibold uppercase text-base mt-1 ">
+      Projects
+    </h1>
+    <div>
+     
+${myProjects}
+  
+    </div>
+  </div>
+</div>
+
+`;
+}
+
+let myExperience = "";
+
+res?.experiences?.forEach((element) => {
+  myExperience =
+    myExperience +
+    `
+    <div class="mt-1 p-1.5 text-justify">
+    <h3 class="text-sm text-white w-fit p-1 rounded-lg bg-black font-semibold">
+    ${element?.company_name}
+    </h3>
+    <div class="flex gap-2">
+      <p class="text-sm text-black">${element?.designation}</p>
+      <p class="text-sm text-black">${
+        element?.start_date
+      }-${element?.is_current ? "Present" : element?.end_date}</p>
+    </div>
+    <p class="text-xs w-80% text-black font-medium">
+    ${element?.description}
+      
+    </p>
+  </div>
+   
+  
+     
+      `;
+});
+let experienceHtml = "";
+
+if (res?.experiences?.length !== 0) {
+  experienceHtml = `
+  <div>
+                  <h1 class="font-semibold uppercase text-base mt-1 ">
+                    Work Experience
+                  </h1>
+                  
+  ${myExperience}
+                   
+                 
+                  
+                </div>
+
+
+`;
+}
+let mySocial = "";
+
+res?.social_links?.forEach((element) => {
+  mySocial =
+    mySocial +
+    `
+    <a
+    href=${element?.link}
+    class="text-blue-600 hover:underline me-2"
+    >${element?.name}</a
+  >
+   
+   
+  
+
+      `;
+});
+
+let socialHtml = "";
+
+if (res?.social_links?.length !== 0) {
+  socialHtml = `
+  <h3>
+  <div class="">
+ ${mySocial}
+  
+  </div>
+
+</h3>
+  
+          
+          
+`;
+}
+
+let myLanguage = "";
+
+res?.languages?.forEach((element) => {
+  myLanguage =
+    myLanguage +
+    `
+    <div class="mt-1 flex gap-x-4 px-2">
+    <p class="text-base">${element?.language}</p>
+  </div>
+  
+
+   
+  
+  
+  
+ 
+  
+
+      `;
+});
+let languageHtml = "";
+
+if (res?.languages?.length !== 0) {
+  languageHtml = `
+  <div class="p-1 bg-gray-200 rounded-md w-fit mt-1">
+  <h1 class="font-semibold uppercase text-base mt-1 ">
+    Language
+  </h1>
+  <div class="flex flex-wrap gap-x-2">
+  ${myLanguage}
+  </div>
+</div>
+ 
+
+`;
+}
+
+let myInterests = "";
+
+res?.interests?.forEach((element) => {
+  myInterests =
+    myInterests +
+    `
+    <p class="text-sm px-2">${element?.interest}</p>
+  
+      `;
+});
+
+let interestHtml = "";
+
+if (res?.interests?.length !== 0) {
+  interestHtml = `
+  <div class="w-fit bg-gray-200 rounded-md p-1 mt-2.5">
+  <h1 class="font-semibold uppercase text-base  ">Interests</h1>
+  <div class="flex gap-x-3">
+ ${myInterests}
+  </div>
+</div>
+
+  
+`;
+}
+
+let mySkills = res?.skills
+  ?.map((item) => {
+    return `
+    <p
+    class="text-sm rounded-md  font-semibold p-1 w-fit"
+  >
+  ${item?.skill}
+  </p>
+  
+
+  
+
+  
+    `;
+  })
+  ?.join("");
+let skillHtml = "";
+
+if (res?.skills?.length !== 0) {
+  skillHtml = `
+  <div class="bg-gray-200 rounded-md w-fit p-1">
+  <h1 class="font-semibold uppercase text-base mt-1 ">
+    Skills
+  </h1>
+  <div
+    class="flex  justify-start gap-y-2 gap-x-2 items-start  flex-wrap mt-2.5"
+  >
+ ${mySkills}
+
+   
+   
+  </div>
+</div>
+ 
+
+  `;
+}
+
+let myCertificate = res?.certification
+  ?.map((item) => {
+    return `
+    <li class="">${item?.certificate}</</li>
+
+    
+    
+    `;
+  })
+  ?.join("");
+
+let certificateHtml = "";
+
+if (res?.certification?.length !== 0) {
+  certificateHtml = `
+  <div class="w-fit bg-gray-200 rounded-md p-1 mt-2.5">
+  <h1 class="font-semibold uppercase text-base ">Certifications</h1>
+  <div>
+    <ul class=" flex flex-col gap-x-2">
+  ${myCertificate}
+
+    </ul>
+  </div>
+</div>
+ 
+  
+  `;
+}
+const dynamicContent = document.getElementById("dynamic-content");
+    dynamicContent.innerHTML = `
+    <!-- header -->
+      <div class="px-2">
+          <header class="flex justify-start gap-x-6 items-start">
+            <div>
+              <img
+              class="w-28 h-32 mt-4 rounded-md"
+              src=${res?.profile_picture}
+              alt="Demo Image"
+            />
+              <div>
+                  <section
+                    class="  font-semibold text-sm mt-1 text-black justify-around items-center"
+                  >
+                    <h3>${res?.email}</h3>
+                    <h3>${res?.mobile_no}</h3>
+                    <h3>${res?.address}</h3>
+                 ${socialHtml}
+                  </section>
+                </div>
+            </div>
+             
+           
+            <div>
+              <h1 class="font-semibold text-xl">${res?.full_name}</h1>
+              <h3 class="font-medium text-gray-400 text-base">${res?.position}</h3>
+              <p class="font-medium bg-gray-200 p-0.5 rounded-lg text-sm">
+                ${res?.summary}
+              </p>
+            </div>
+          </header> 
+        </div>
+        <!-- section 1-->
+        <div class="px-2">
+          <section class="flex justify-between">
+              <div class="w-[50%]">  
+                  
+                  ${experienceHtml}
+${projectHtml}
+                
+               ${educationHtml}
+                <div class="w-[50%]">
+                  <div class=" flex flex-col">
+  
+                   ${skillHtml}
+                      <!-- languages -->
+                     ${languageHtml}
+                          <!--  certificates-->
+     ${certificateHtml}
+        <!-- Interest-->
+       ${interestHtml}
+         <!-- Video Profile 
+         
+         {videoProfileHtml}
+         -->
+                    </div>
+                </div>
+              </section>
+          </div>
+  
+        </div>
+    `
+}  
+    </script>
+</body>
+</html>
