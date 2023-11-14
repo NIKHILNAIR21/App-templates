@@ -45,7 +45,7 @@
                  res?.skills
                    ?.map((item) => {
                      return ` <p
-                     class="text-sm rounded-md  font-semibold p-2 w-fit"
+                     class="text-sm rounded-md bg-cyan-400 text-white font-semibold p-2 w-fit"
                    >
                      ${item?.skill}
                    </p>`;
@@ -174,7 +174,7 @@
           <header class="flex justify-start gap-x-6 items-center">
             <div>
               <h1 class="font-semibold text-2xl">${res?.full_name}</h1>
-              <h3 class="font-medium text-pink-400 text-lg">${res?.position}</h3>
+              <h3 class="font-medium text-cyan-400 text-lg">${res?.position}</h3>
               <p class="font-medium text-base">
               ${res?.summary}
               </p>
@@ -184,7 +184,7 @@
         <!-- contact -->
         <div>
           <section
-            class="flex bg-gray-700 rounded-md font-semibold text-14px mt-2.5 text-violet-100 justify-around items-center"
+            class="flex bg-cyan-700 rounded-md font-semibold text-14px mt-2.5 text-violet-100 justify-around items-center"
           >
             <div>
             <h3>${res?.email}</h3>
@@ -200,11 +200,11 @@
         <div class="px-2 flex">
           <span class="w-0.5 flex-grow-0 bg-gray-700 mr-2"></span>
           <div>
-            <h1 class="font-semibold uppercase text-xl mt-3 text-gray-700">
+            <h1 class="font-semibold uppercase text-xl mt-3 text-cyan-700">
               Skills
             </h1>
             <div
-              class="flex flex-col justify-start gap-y-2 gap-x-10 items-start h-32 flex-wrap mt-2.5"
+              class="flex  justify-start gap-y-2 gap-x-10 items-start  flex-wrap mt-2.5"
             >
 
             ${mySkills}
@@ -213,15 +213,15 @@
         </div>
         <!--line-->
         <div class="flex my-1">
-          <p class="w-[90%] mx-auto bg-pink-700 h-1"></p>
-          <p class="w-[90%] mx-auto bg-gray-700 h-1"></p>
-          <p class="w-[90%] mx-auto bg-blue-700 h-1"></p>
+          <p class="w-[90%] mx-auto bg-cyan-500 h-1"></p>
+          <p class="w-[90%] mx-auto bg-cyan-400 h-1"></p>
+          <p class="w-[90%] mx-auto bg-cyan-300 h-1"></p>
         </div>
         <!-- workexp -->
         <div class="px-2 flex">
           <span class="w-0.5 flex-grow-0 bg-gray-700 mr-2"></span>
           <div>
-            <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">
+            <h1 class="font-semibold uppercase text-xl mt-4 text-cyan-700">
               Work Experience
             </h1>
             <div>
@@ -232,15 +232,15 @@
         </div>
         <!-- lines -->
         <div class="flex my-1">
-          <p class="w-[90%] mx-auto bg-pink-700 h-1"></p>
-          <p class="w-[90%] mx-auto bg-gray-700 h-1"></p>
-          <p class="w-[90%] mx-auto bg-blue-700 h-1"></p>
+            <p class="w-[90%] mx-auto bg-cyan-500 h-1"></p>
+          <p class="w-[90%] mx-auto bg-cyan-400 h-1"></p>
+          <p class="w-[90%] mx-auto bg-cyan-300 h-1"></p>
         </div>
         <!-- Project -->
         <div class="px-2 flex">
           <span class="w-0.5 flex-grow-0 bg-gray-700 mr-2"></span>
           <div>
-            <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">
+            <h1 class="font-semibold uppercase text-xl mt-4 text-cyan-700">
               Projects
             </h1>
             <div>
@@ -251,15 +251,15 @@
         </div>
         <!-- lines -->
         <div class="flex my-1">
-          <p class="w-[90%] mx-auto bg-pink-700 h-1"></p>
-          <p class="w-[90%] mx-auto bg-gray-700 h-1"></p>
-          <p class="w-[90%] mx-auto bg-blue-700 h-1"></p>
+            <p class="w-[90%] mx-auto bg-cyan-500 h-1"></p>
+          <p class="w-[90%] mx-auto bg-cyan-400 h-1"></p>
+          <p class="w-[90%] mx-auto bg-cyan-300 h-1"></p>
         </div>
         <!-- education -->
         <div class="px-2 flex">
           <span class="w-0.5 flex-grow-0 bg-gray-700 mr-2"></span>
           <div class="">
-            <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">
+            <h1 class="font-semibold uppercase text-xl mt-4 text-cyan-700">
               Education
             </h1>
             <div>
@@ -270,7 +270,7 @@
         </div>
         <!-- language -->
         <div class="px-4">
-          <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">
+          <h1 class="font-semibold uppercase text-xl mt-4 text-cyan-700">
             Language
           </h1>
           <div class="flex gap-x-4">
@@ -280,7 +280,7 @@
         </div>
         <!--  certificates-->
         <div class="px-4">
-          <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">Certifications</h1>
+          <h1 class="font-semibold uppercase text-xl mt-4 text-cyan-700">Certifications</h1>
           <div>
             <ul class="list-disc flex gap-x-1 list-inside">
              ${myCertificate}
@@ -289,7 +289,7 @@
         </div>
         <!-- Interest-->
         <div class="px-4">
-          <h1 class="font-semibold uppercase text-xl mt-4 text-gray-700">Interests</h1>
+          <h1 class="font-semibold uppercase text-xl mt-4 text-cyan-700">Interests</h1>
           <div class="flex gap-x-3">
             ${myInterests}
           </div>
