@@ -55,7 +55,7 @@
                   res?.skills
                     ?.map((item) => {
                       return ` <p
-                      class="text-sm rounded-md text-white font-semibold p-2 w-fit bg-purple-500"
+                      class="text-sm rounded-md text-white font-semibold p-1 w-fit bg-purple-500"
                     >
                       ${item?.skill}
                     </p>`;
@@ -115,7 +115,7 @@
                         `
                         <div class="mt-1 p-1.5 rounded">
                         <div>
-                          <h3 class="text-lg font-medium">${element?.university}</h3>
+                          <h3 class="text-base font-medium">${element?.university}</h3>
                           <p class="text-base text-gray-600">
                           ${element?.course}
                           </p>
@@ -136,7 +136,7 @@
                         myLanguage +
                         `
                         <div class="mt-1 flex gap-x-4 px-2">
-                        <p class="text-base">${element?.language}</p>
+                        <p class="text-sm">${element?.language}</p>
                       </div>
                         
                      
@@ -163,7 +163,7 @@
                       
                       `
                     })?.join("");
-                    const videoQuestions = res?.video_questions?.filter((question) => question?.video !== null);
+                    // const videoQuestions = res?.video_questions?.filter((question) => question?.video !== null);
     
     
                 //     let myVideos = "";
@@ -203,7 +203,7 @@
                   <div>
                   <div class="main-container bg-white">
                     <!-- header -->
-                    <div class="px-2  bg-purple-300">
+                    <div class="px-2  bg-purple-400">
                       <header class="flex justify-start gap-x-6 items-center">
                         <img
                           class="w-28 h-32 mt-4 rounded-md"
@@ -211,9 +211,9 @@
                           alt="Demo Image"
                         />
                         <div>
-                          <h1 class="font-semibold text-2xl">${res?.full_name}</h1>
-                          <h3 class="font-medium text-gray-600 text-lg">${res?.position}</h3>
-                          <p class="font-medium text-base">
+                          <h1 class="font-semibold text-xl">${res?.full_name}</h1>
+                          <h3 class="font-medium text-gray-600 text-base">${res?.position}</h3>
+                          <p class="font-medium text-xs">
                            ${res?.summary}
                           </p>
                         </div>
@@ -221,7 +221,7 @@
                     </div>
                     <!-- contact -->
                     <div>
-                      <section class="flex bpurple-600 font-semibold text-sm mt-2.5 text-white justify-around items-center">
+                      <section class="flex bg-purple-600 font-semibold text-sm mt-2.5 text-white justify-around items-center">
                       <h3>${res?.email}</h3>
                       <h3>${res?.phone}</h3>
                       <h3>${res?.address}</h3>
@@ -232,16 +232,16 @@
                     </div>
                     <!-- skill -->
                     <div class="px-2">
-                      <h1 class="font-semibold uppercase text-xl mt-3 text-purple-500">
+                      <h1 class="font-semibold uppercase text-base mt-3 text-purple-500">
                         Skills
                       </h1>
-                      <div class="flex gap-x-2.5 flex-wrap mt-2.5">
+                      <div class="flex gap-2.5 flex-wrap mt-2.5">
                        ${mySkills}
                       </div>
                     </div>
                     <!-- workExp -->
                     <div class="px-2">
-                      <h1 class="font-semibold uppercase text-xl mt-4 text-purple-500">
+                      <h1 class="font-semibold uppercase text-base mt-2 text-purple-500">
                         Work Experience
                       </h1>
                       <div>
@@ -250,7 +250,7 @@
                     </div>
                     <!-- Project -->
                     <div class="px-2">
-                      <h1 class="font-semibold uppercase text-xl mt-4 text-purple-500">
+                      <h1 class="font-semibold uppercase text-base mt-2 text-purple-500">
                         Projects
                       </h1>
                       <div>
@@ -259,7 +259,7 @@
                     </div>
                     <!-- education -->
                     <div class="px-2">
-                      <h1 class="font-semibold uppercase text-xl mt-4 text-purple-500">
+                      <h1 class="font-semibold uppercase text-base mt-2 text-purple-500">
                         Education
                       </h1>
                       <div>
@@ -268,7 +268,7 @@
                     </div>
                     <!--language-->
                     <div class="px-2">
-                      <h1 class="font-semibold uppercase text-xl mt-4 text-purple-500">
+                      <h1 class="font-semibold uppercase text-base mt-2 text-purple-500">
                         Languages
                       </h1>
                       <div class="flex gap-x-4">
@@ -277,7 +277,7 @@
                     </div>
                     <!--certificate-->
                     <div class="px-2">
-                      <h1 class="font-semibold uppercase text-xl mt-4 text-purple-500">
+                      <h1 class="font-semibold uppercase text-base mt-2 text-purple-500">
                         Certifications
                       </h1>
                       <div>
@@ -288,10 +288,10 @@
                     </div>
                     <!-- interest -->
                     <div class="px-2">
-                      <h1 class="font-semibold uppercase text-xl mt-4 text-purple-500">
+                      <h1 class="font-semibold uppercase text-base mt-2 text-purple-500">
                         Interests
                       </h1>
-                      <div class="flex gap-x-3">
+                      <div class="flex gap-3">
                     ${myInterests}
                       </div>
                     </div>

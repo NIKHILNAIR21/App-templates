@@ -26,288 +26,295 @@
 
           if (Object.keys(data).length>=1) {
               let res =data
-
-
-
-        let myEducation = "";
-
-        res?.eductaions?.forEach((element) => {
-          myEducation =
-            myEducation +
-            `
-            <div class="mt-1 p-1.5 rounded">
-            <div></div>
-            <h3 class="text-lg font-medium">${element?.university}</h3>
-            <p class="text-base text-amber-600">
-            ${element?.course}
-            </p>
-            <p class="text-sm text-amber-600">${element?.start_date}-${
-              element?.is_current ? "Currently studying" : element?.end_date
-            }</p>
-          </div> `;
-        });
-        let educationHtml = "";
-
-        if (res?.eductaions?.length !== 0) {
-          educationHtml = `
-        <div class="px-2">
-        <div class="border-t-2 border-amber-600 border-b-2">
-        <h1 class="font-semibold uppercase text-xl text-center text-amber-600">Education</h1>
-      </div>
-        <div>
-      ${myEducation}
-        </div>
-      </div>
+              let myEducation = "";
+  
+  res?.eductaions?.forEach((element) => {
+    myEducation =
+      myEducation +
+      `
+      <div class=" pt-1 rounded">
+      <div></div>
+      <h3 class="text-sm font-medium">${element?.university}</h3>
+      <p class="text-sm text-gray-600">
+      ${element?.course}
+      </p>
+      <p class="text-sm text-gray-600">${element?.start_date}-${
+        element?.is_current ? "Currently studying" : element?.end_date
+      }</p>
+    </div>
         `;
-        }
+  });
+  let educationHtml = "";
 
-        let myProjects = "";
+  if (res?.eductaions?.length !== 0) {
+    educationHtml = `
+  <div class="px-6">
+  <h1 class="font-semibold uppercase text-base mt-2 text-pink-500">Education</h1>
+  <div class="flex gap-x-4">
+${myEducation}
+  </div>
+</div>
+  `;
+  }
 
-        res?.projects?.forEach((element) => {
-          myProjects =
-            myProjects +
-            `
-            <div class="mt-1 p-1.5 text-justify">
-            <h3 class="text-base text-black font-semibold">${element?.title}</h3>
-            <div class="flex justify-between">
-              <p class="text-base text-black">${element?.link}</p>
-              <p class="text-base text-black">${element?.start_date}-${element?.end_date}</p>
-            </div>
-            <p class="text-sm w-80% text-black font-medium">
-              ${element?.description}
-            </p>
-          </div>
-              `;
-        });
-        let projectHtml = "";
+  let myProjects = "";
 
-        if (res?.projects?.length !== 0) {
-          projectHtml = `
-        <div class="px-2">
-        <div class="border-t-2 border-amber-600 border-b-2">
-        <h1 class="font-semibold uppercase text-xl text-center text-amber-600">Project</h1>
+  res?.projects?.forEach((element) => {
+    myProjects =
+      myProjects +
+      `
+      <div class=" pt-1 text-justify">
+      <h3 class="text-sm text-black font-semibold">${element?.title}</h3>
+      <div class="flex justify-between">
+        <p class="text-sm text-black">${element?.link}</p>
+        <p class="text-sm text-black">${element?.start_date}-${element?.end_date}</p>
       </div>
-                <div>
-                 ${myProjects}
-                </div>
-              </div>
+      <p class="text-sm w-80% text-black font-medium">
+        ${element?.description}
+      </p>
+    </div>
+      
+
         `;
-        }
+  });
+  let projectHtml = "";
 
-        let myExperience = "";
-
-        res?.experiences?.forEach((element) => {
-          myExperience =
-            myExperience +
-            `
-
-            <div class="mt-1 p-1.5 text-justify">
-            <h3 class="text-base text-amber-400 font-semibold">${
-              element?.company_name
-            }</h3>
-            <div class="flex justify-between">
-              <p class="text-base text-black">${element?.designation}</p>
-              <p class="text-base text-black">${element?.start_date}-${
-              element?.is_current ? "Present" : element?.end_date
-            }</p>
-            </div>
-            <p class="text-sm w-80% text-black font-medium">
-            ${element?.description}
-
-            </p>
-          </div>
-
-              `;
-        });
-        let experienceHtml = "";
-
-        if (res?.experiences?.length !== 0) {
-          experienceHtml = `
-          <div class="px-2">
-          <div class="border-t-2 border-amber-600 border-b-2">
-            <h1 class="font-semibold uppercase text-xl text-center text-amber-600">Work Experience</h1>
-          </div>
+  if (res?.projects?.length !== 0) {
+    projectHtml = `
+  <div class="px-6">
+          <h1 class="font-semibold uppercase text-base mt-1 text-pink-500">Projects</h1>
           <div>
-           ${myExperience}
-
+           ${myProjects}
           </div>
         </div>
+  `;
+  }
+
+  let myExperience = "";
+
+  res?.experiences?.forEach((element) => {
+    myExperience =
+      myExperience +
+      `
+      
+      <div class=" pt-1 text-justify">
+      <h3 class="text-sm text-black font-semibold">${
+        element?.company_name
+      }</h3>
+      <div class="flex justify-between">
+        <p class="text-sm text-black">${element?.designation}</p>
+        <p class="text-sm text-black">${element?.start_date}-${
+        element?.is_current ? "Present" : element?.end_date
+      }</p>
+      </div>
+      <p class="text-sm w-80% text-black font-medium">
+      ${element?.description}
+        
+      </p>
+    </div>
+       
         `;
-        }
-        let mySocial = "";
+  });
+  let experienceHtml = "";
 
-        res?.social_links?.forEach((element) => {
-          mySocial =
-            mySocial +
-            `
-            <a class="px-2" href=${element?.link}
-            >${element?.name}</a
-          >
+  if (res?.experiences?.length !== 0) {
+    experienceHtml = `
+    <div class="px-6">
+    <h1 class="font-semibold uppercase text-base mt-2 text-pink-500">Work Experience</h1>
+    <div class="my-1">
+  
+   ${myExperience}
+    </div>
+  </div>
+  `;
+  }
+  let mySocial = "";
 
-              `;
-        });
+  res?.social_links?.forEach((element) => {
+    mySocial =
+      mySocial +
+      `
+      <a class="px-2" href=${element?.link}
+      >${element?.name}</a
+    >
 
-        let socialHtml = "";
-
-        if (res?.social_links?.length !== 0) {
-          socialHtml = `
-          <h3 class="flex gap-2 text-right">
-                      ${mySocial}
-                        </h3>
         `;
-        }
+  });
 
-        let myLanguage = "";
+  let socialHtml = "";
 
-        res?.languages?.forEach((element) => {
-          myLanguage =
-            myLanguage +
-            `
-            <div class="mt-1 flex gap-x-4 px-2">
-            <p class="text-base">${element?.language}</p>
+  if (res?.social_links?.length !== 0) {
+    socialHtml  = `
+    <h3>
+             ${mySocial}
+            </h3>
+  `;
+  }
+
+  let myLanguage = "";
+
+  res?.languages?.forEach((element) => {
+    myLanguage =
+      myLanguage +
+      `
+      <div class="mt-1 flex gap-x-4 px-2">
+      <p class="text-xs">${element?.language}</p>
+    </div>
+    
+   
+    
+
+        `;
+  });
+  let languageHtml = "";
+
+  if (res?.languages?.length !== 0) {
+    languageHtml  = `
+    <div class="px-6">
+          <h1 class="font-semibold uppercase text-base mt-1 text-pink-500">Languages</h1>
+          <div class="flex flex-wrap gap-4">
+           ${myLanguage}
           </div>
-              `;
-        });
-        let languageHtml = "";
-
-        if (res?.languages?.length !== 0) {
-          languageHtml = `
-          <div class="px-2">
-          <div class="border-t-2 border-amber-600 border-b-2">
-          <h1 class="font-semibold uppercase text-xl text-center text-amber-600">Languages</h1>
         </div>
-                <div class="flex gap-x-4 justify-center flex-wrap">
-                 ${myLanguage}
-                </div>
+  `;
+  }
+
+  let myInterests = "";
+
+  res?.interests?.forEach((element) => {
+    myInterests =
+      myInterests +
+      `
+        
+     
+    <p class="text-sm ">${element?.interest}</p>
+
+ 
+    
+
+        `;
+  });
+
+  let interestHtml = "";
+
+  if (res?.interests?.length !== 0) {
+    interestHtml  = `
+    <div class="px-6">
+          <h1 class="font-semibold uppercase text-base mt-1 text-pink-500">Interests</h1>
+          <div class="flex flex-wrap gap-x-3">
+        ${myInterests}
+          </div>
+        </div>
+  `;
+  }
+
+  let mySkills = res?.skills
+    ?.map((item) => {
+      return ` <p
+      class="text-sm  text-black font-semibold  w-fit "
+    >
+    ${item?.skill}
+    
+    </p>
+     
+      `;
+    })
+    ?.join("");
+    let skillHtml = "";
+
+    if (res?.skills?.length !== 0) {
+      skillHtml  = `
+      <div class="px-6">
+      <h1 class="font-semibold uppercase text-base mt-1 text-pink-500">
+        Skills
+      </h1>
+      <div class="flex gap-2.5 flex-warp mt-1">
+       ${mySkills}
+       
+      </div>
+    </div>
+    `;
+    }
+
+  let myCertificate = certification
+    ?.map((item) => {
+      return `
+      <li class="text-xs">${item?.certificate}</li>
+      
+      `;
+    })
+    ?.join("");
+
+    let certificateHtml = "";
+
+    if (res?.certification?.length !== 0) {
+      certificateHtml  = `
+      <div class="px-6">
+      <h1 class="font-semibold uppercase text-base mt-1 text-pink-500">Certification</h1>
+      <div>
+        <ul class="flex-wrap flex gap-3 underline">
+      ${myCertificate}
+        </ul>
+      </div>
+    </div>
+    `;
+    }
+
+  const dynamicContent = document.getElementById("dynamic-content");
+    dynamicContent.innerHTML=`
+    <div class="main-container w-full">
+          <!-- header -->
+          <div class="px-6 pt-2 ">
+            <header class="flex justify-start gap-x-6 items-center">
+              <div>
+                <h1 class="font-semibold capitalize text-xl">${res?.full_name}</h1>
+                <h3 class="font-medium capitalize text-gray-700 text-base">${res?.position}</h3>
+                <p class="font-medium text-sm">
+                  ${reS?.summary}
+                
+                </p>
               </div>
-        `;
-        }
-
-        let myInterests = "";
-
-       res?.interests?.forEach((element) => {
-          myInterests =
-            myInterests +
-            `
-
-
-          <p class="te xt-sm px-2">${element?.interest}</p>
-
-              `;
-        });
-
-        let interestHtml = "";
-
-        if (res?.interests?.length !== 0) {
-          interestHtml = `
-          <div class="px-2">
-          <div class="border-t-2 border-amber-600 border-b-2">
-          <h1 class="font-semibold text-center uppercase text-xl text-amber-600">Interests</h1>
+            </header>
+          </div>
+          <!-- contact -->
+          <div>
+            <section
+              class="flex bg-pink-500 font-semibold text-sm mt-2.5 p-2 text-white justify-around items-center"
+            >
+              <h3>${res?.email}</h3>
+              <h3>${res?.mobile_no}</h3>
+              <h3>${res?.address}</h3>
+             ${socialHtml}
+            </section>
+          </div>
+          <!-- skill -->
+       ${skillHtml}
+          <!--work exp  -->
+        ${experienceHtml}
+          <!-- Projects -->
+        ${projectHtml}
+          <!-- education -->
+        ${educationHtml}
+          <!-- language -->
+         ${languageHtml}
+          <!-- certificate  -->
+        ${certificateHtml}
+          <!--interest  -->
+         ${interestHtml}
+          <!-- video profile  
+          
+          {videoProfileHtml}
+          -->
+          
         </div>
-
-                <div class="flex gap-x-3">
-              ${myInterests}
-                </div>
-              </div>
-        `;
-        }
-
-        let mySkills = res?.skills
-          ?.map((item) => {
-            return `
-            <p class="text-sm rounded-md bg-amber-600 p-1.5 text-white font-semibold w-fit">  ${item?.skill}</p>
+  
 
 
-            `;
-          })
-          ?.join("");
-        let skillHtml = "";
+`;
 
-        if (res?.skills?.length !== 0) {
-          skillHtml = `
-            <div class="px-2">
-            <div class="border-t-2 border-amber-600 border-b-2">
-              <h1 class="font-semibold text-center uppercase text-xl text-amber-600">Skills</h1>
-            </div>
 
-            <hr />
 
-            <div class="flex  justify-start gap-2 items-start  flex-wrap mt-2.5">
 
-          ${mySkills}
-            </div>
-          </div>
-          `;
-        }
-
-        let myCertificate = res?.certification
-          ?.map((item) => {
-            return `
-            <li>${item?.certificate}</li>
-
-            `;
-          })
-          ?.join("");
-
-        let certificateHtml = "";
-
-        if (res?.certification?.length !== 0) {
-          certificateHtml = `
-            <div class="px-2">
-            <div class="border-t-2 border-amber-600 border-b-2">
-            <h1 class="font-semibold uppercase text-xl text-center text-amber-600">Certification</h1>
-          </div>
-            <div>
-              <ul class="list-disc flex gap-x-1 list-inside">
-            ${myCertificate}
-              </ul>
-            </div>
-          </div>
-          `;
-        }
-        const dynamicContent = document.getElementById('dynamic-content');
-        dynamicContent.innerHTML = `<div class="main-container bg-white">
-        <div class="flex justify-between">
-                <!-- header -->
-                <div class="px-2">
-                    <header class="flex justify-start gap-x-6 items-center">
-                      <div>
-                        <h1 class="font-semibold text-2xl">${res?.full_name}</h1>
-                        <h3 class="font-medium text-gray-400 text-lg">${res?.position}</h3>
-                        <p class="font-medium text-base">${res?.summary}.</p>
-                      </div>
-                    </header>
-                </div>
-                  <!-- contact -->
-                  <div>
-
-                      <section class="flex flex-col font-semibold text-right text-sm mt-2.5 text-gray-700 justify-around items-end">
-                        <h3>Email:${res?.email}</h3>
-                        <h3>Phone:${res?.mobile_no}</h3>
-                        <h3>City:${res?.address}</h3>
-                      ${socialHtml}
-                      </section>
-                  </div>
-            </div>
-                <!-- skill -->
-            ${skillHtml}
-                  <!-- workexp -->
-               ${experienceHtml}
-                  <!--Project  -->
-                ${projectHtml}
-                  <!-- Education0 -->
-                ${educationHtml}
-                  <!--  language-->
-                 ${languageHtml}
-                  <!-- certificate -->
-               ${certificateHtml}
-                  <!-- interest -->
-                ${interestHtml}
-                  <!--video profile  -->
-           
-               </div>
-               
-               `
           } else {
               console.log("error");
           }
