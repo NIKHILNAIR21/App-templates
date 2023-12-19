@@ -24,9 +24,9 @@
     </div>
     <script>
                const data = {{data|safe}}
-
+               let res;
       if(Object.keys(data).length>=1){
-         let res=data
+         res=data
          let myEducation = "";
 
       res?.eductaions?.forEach((element) => {
@@ -233,9 +233,10 @@
 
                   `;
       }
-      };
       const dynamicContent = document.getElementById("dynamic-content");
           dynamicContent.innerHTML =`
+
+
 
         <div class="main-container ">
           <div class="header flex p-3 item-center justify-evenly bg-slate-700">
@@ -289,7 +290,7 @@
           </div>
         </div>
 
-      `
+      `  };
     </script>
   </body>
 </html>
